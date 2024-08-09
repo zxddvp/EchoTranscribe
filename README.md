@@ -27,7 +27,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/EchoTranscribe.git
+   git clone https://github.com/zxddvp/EchoTranscribe.git
    cd EchoTranscribe
    ```
 
