@@ -1,0 +1,8 @@
+{
+    "select_video": "选择要转录的视频文件",
+    "browse": "浏览",
+    "processing_file": "正在处理文件 {idx} / {total}...",
+    "error_processing_file": "处理文件时出错: {file_name}",
+    "all_files_processed": "所有文件已处理。",
+    "window_title": "视频转文字"
+}

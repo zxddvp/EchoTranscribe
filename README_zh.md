@@ -1,64 +1,120 @@
 # EchoTranscribe
 
-## 介绍
+EchoTranscribe 是一个强大的视频音频转录工具，支持多种格式的视频和音频文件，可以将语音内容转换为文本。
 
-**EchoTranscribe** 是一个强大的跨平台工具，旨在从任何视频文件中提取音频并转录为文本。它利用了 PyQt 提供的无缝图形界面和 Whisper 的尖端语音识别能力，使得在多个平台上将视频内容转换为文本变得简单易行。
+## 主要特性
 
-## 功能
+- 支持多种视频格式 (mp4, avi, mkv, mov, flv, wmv)
+- 支持多种音频格式 (wav, mp3, aac, m4a, flac)
+- 多语言界面 (简体中文、繁体中文、英文)
+- 自动语言检测和指定语言转录
+- 并行处理多个文件
+- 转录结果保存为文本或JSON格式
+- 自动清理临时文件
+- 文件大小和格式验证
+- 进度显示和错误处理
 
-- **多平台支持**：在 Windows、macOS 和 Linux 上轻松运行 EchoTranscribe。
-- **音频提取**：使用 FFmpeg 从任何视频文件中提取高质量音频。
-- **高级语音识别**：使用 Whisper 的尖端模型将提取的音频转换为文本。
-- **用户友好界面**：使用 PyQt 构建，提供直观和流畅的用户体验。
-- **实时进度**：实时监控提取和转录过程。
-- **文本导出**：轻松保存转录的文本以供进一步使用。
+## 系统要求
+
+- Python 3.8 或更高版本
+- FFmpeg（用于音频提取）
+- 足够的磁盘空间用于临时文件
 
 ## 安装
 
-### 前提条件
-
-- **Python 3.8+**
-- **FFmpeg**（确保 FFmpeg 已安装并添加到系统路径中）
-- **PyQt5**
-- **Whisper**
-- **其他依赖项**：请参阅 `requirements.txt`
-
-### 设置
-
 1. 克隆仓库：
-   ```bash
-   git clone https://github.com/zxddvp/EchoTranscribe.git
-   cd EchoTranscribe
-   ```
+```bash
+git clone https://github.com/yourusername/EchoTranscribe.git
+cd EchoTranscribe
+```
 
-2. 安装所需的 Python 包：
-   ```bash
-   pip install -r requirements.txt
-   ```
+2. 创建虚拟环境：
+```bash
+python -m venv .etvenv
+source .etvenv/bin/activate  # Linux/Mac
+.etvenv\Scripts\activate     # Windows
+```
 
-3. 运行应用程序：
-   ```bash
-   python main.py
-   ```
+3. 安装依赖：
+```bash
+pip install -r requirements.txt
+```
 
-## 用法
+4. 安装FFmpeg：
+- Windows: 从 https://ffmpeg.org/download.html 下载并添加到系统PATH
+- Mac: `brew install ffmpeg`
+- Linux: `sudo apt-get install ffmpeg`
 
-1. 打开应用程序。
-2. 从本地存储中选择一个视频文件。
-3. 点击“开始”提取音频并转录为文本。
-4. 在应用程序中直接查看进度和最终输出。
-5. 如有需要，导出转录的文本。
+## 使用方法
 
-## 贡献
+1. 启动程序：
+```bash
+python main.py
+```
 
-我们欢迎贡献！如果您有想法或改进意见，请随时 fork 此仓库，进行修改并提交 pull request。
+2. 使用界面：
+   - 选择界面语言
+   - 选择要转录的音频语言（可选）
+   - 点击"浏览"选择文件
+   - 等待处理完成
+   - 保存转录结果
+
+## 配置
+
+可以在 `src/utils/config.py` 中修改以下配置：
+
+- 最大文件大小限制
+- 支持的文件格式
+- 音频转换参数
+- 并行处理线程数
+- Whisper模型选择
+
+## 注意事项
+
+- 临时文件保存在系统临时目录，24小时后自动清理
+- 大文件处理可能需要较长时间
+- 建议保持足够的磁盘空间
+
+## 开发
+
+### 运行测试
+
+```bash
+python -m pytest tests/
+```
+
+### 项目结构
+
+```
+EchoTranscribe/
+├── src/
+│   ├── audio/          # 音频处理模块
+│   ├── transcribe/     # 转录模块
+│   ├── ui/            # 用户界面
+│   ├── utils/         # 工具函数
+│   └── translations/  # 翻译文件
+├── tests/             # 测试文件
+├── main.py           # 主程序
+└── requirements.txt  # 依赖列表
+```
 
 ## 许可证
 
-本项目采用 MIT 许可证 - 详情请参阅 [LICENSE](LICENSE) 文件。
+MIT License
 
-## 致谢
+## 贡献
 
-- 感谢 **Whisper** 提供强大的语音识别模型。
-- 感谢 **PyQt** 提供灵活且强大的 GUI 框架。
-- 感谢 **FFmpeg** 提供在多媒体处理中的必备工具。
+欢迎提交 Issue 和 Pull Request！
+
+## 更新日志
+
+### v1.1.0
+- 添加并行处理支持
+- 添加文件验证和安全检查
+- 添加临时文件自动清理
+- 改进错误处理
+- 添加转录结果保存功能
+- 支持更多音频格式
+
+### v1.0.0
+- 初始发布

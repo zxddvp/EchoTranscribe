@@ -1,65 +1,121 @@
 # EchoTranscribe
 
-## Introduction
+EchoTranscribe 是一个强大的视频音频转录工具，支持多种格式的视频和音频文件，可以将语音内容转换为文本。
 
-**EchoTranscribe** is a powerful cross-platform tool designed to extract audio and transcribe text from any video file. Leveraging the capabilities of PyQt for a seamless graphical interface and Whisper for state-of-the-art speech recognition, this software makes it easy to convert video content into text on multiple platforms.
+## 主要特性
 
-## Features
+- 支持多种视频格式 (mp4, avi, mkv, mov, flv, wmv)
+- 支持多种音频格式 (wav, mp3, aac, m4a, flac)
+- 多语言界面 (简体中文、繁体中文、英文)
+- 自动语言检测和指定语言转录
+- 并行处理多个文件
+- 转录结果保存为文本或JSON格式
+- 自动清理临时文件
+- 文件大小和格式验证
+- 进度显示和错误处理
 
-- **Multi-Platform Support**: Run EchoTranscribe on Windows, macOS, and Linux with ease.
-- **Audio Extraction**: Extract high-quality audio from any video file using FFmpeg.
-- **Advanced Speech Recognition**: Convert extracted audio to text with Whisper's cutting-edge model.
-- **User-Friendly Interface**: Built with PyQt, providing an intuitive and smooth user experience.
-- **Real-time Progress**: Monitor the extraction and transcription process in real-time.
-- **Text Export**: Easily save transcribed text to a file for further use.
+## 系统要求
 
-## Installation
+- Python 3.8 或更高版本
+- FFmpeg（用于音频提取）
+- 足够的磁盘空间用于临时文件
 
-### Prerequisites
+## 安装
 
-- **Python 3.8+**
-- **FFmpeg** (Ensure FFmpeg is installed and added to your system PATH)
-- **PyQt5**
-- **Whisper**
-- **Other dependencies**: See `requirements.txt`
+1. 克隆仓库：
+```bash
+git clone https://github.com/yourusername/EchoTranscribe.git
+cd EchoTranscribe
+```
 
-### Setup
+2. 创建虚拟环境：
+```bash
+python -m venv .etvenv
+source .etvenv/bin/activate  # Linux/Mac
+.etvenv\Scripts\activate     # Windows
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/zxddvp/EchoTranscribe.git
-   cd EchoTranscribe
-   ```
+3. 安装依赖：
+```bash
+pip install -r requirements.txt
+```
 
-2. Install required Python packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
+4. 安装FFmpeg：
+- Windows: 从 https://ffmpeg.org/download.html 下载并添加到系统PATH
+- Mac: `brew install ffmpeg`
+- Linux: `sudo apt-get install ffmpeg`
 
-3. Run the application:
-   ```bash
-   python main.py
-   ```
+## 使用方法
 
-## Usage
+1. 启动程序：
+```bash
+python main.py
+```
 
-1. Open the application.
-2. Select a video file from your local storage.
-3. Click "Start" to extract the audio and transcribe the text.
-4. View the progress and final output directly within the application.
-5. Export the transcribed text if needed.
+2. 使用界面：
+   - 选择界面语言
+   - 选择要转录的音频语言（可选）
+   - 点击"浏览"选择文件
+   - 等待处理完成
+   - 保存转录结果
 
-## Contributing
+## 配置
 
-We welcome contributions! If you have ideas or improvements, feel free to fork this repository, make your changes, and submit a pull request.
+可以在 `src/utils/config.py` 中修改以下配置：
 
-## License
+- 最大文件大小限制
+- 支持的文件格式
+- 音频转换参数
+- 并行处理线程数
+- Whisper模型选择
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 注意事项
 
-## Acknowledgments
+- 临时文件保存在系统临时目录，24小时后自动清理
+- 大文件处理可能需要较长时间
+- 建议保持足够的磁盘空间
 
-- **Whisper** for providing a robust speech recognition model.
-- **PyQt** for the flexible and powerful GUI framework.
-- **FFmpeg** for the indispensable tool in multimedia processing.
+## 开发
+
+### 运行测试
+
+```bash
+python -m pytest tests/
+```
+
+### 项目结构
+
+```
+EchoTranscribe/
+├── src/
+│   ├── audio/          # 音频处理模块
+│   ├── transcribe/     # 转录模块
+│   ├── ui/            # 用户界面
+│   ├── utils/         # 工具函数
+│   └── translations/  # 翻译文件
+├── tests/             # 测试文件
+├── main.py           # 主程序
+└── requirements.txt  # 依赖列表
+```
+
+## 许可证
+
+MIT License
+
+## 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 更新日志
+
+### v1.1.0
+- 添加并行处理支持
+- 添加文件验证和安全检查
+- 添加临时文件自动清理
+- 改进错误处理
+- 添加转录结果保存功能
+- 支持更多音频格式
+
+### v1.0.0
+- 初始发布
 

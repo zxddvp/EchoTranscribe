@@ -1,0 +1,8 @@
+{
+    "select_video": "Select a video file to transcribe",
+    "browse": "Browse",
+    "processing_file": "Processing file {idx} of {total}...",
+    "error_processing_file": "Error processing file: {file_name}",
+    "all_files_processed": "All files processed.",
+    "window_title": "EchoTranscribe"
+}
